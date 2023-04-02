@@ -12,7 +12,7 @@ import {
 import Rating from '../components/Rating';
 import axios from 'axios';
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = () => {
   const params = useParams();
 
   // const product = products.find((p) => p._id === params.id);
@@ -26,7 +26,7 @@ const ProductScreen = ({ match }) => {
       setProduct(data);
     };
     fetchProduct();
-  }, []);
+  }, [params.id]);
 
   return (
     <>
