@@ -10,7 +10,7 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   const products = await Product.find({});
 
-  res.json;
+  res.json(products);
 });
 
 //@desc fetch single products
