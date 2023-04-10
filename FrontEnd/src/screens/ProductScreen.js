@@ -35,7 +35,7 @@ const ProductScreen = () => {
       {loading ? (
         <Loader />
       ) : error ? (
-        <Message varian='danger'> {error}</Message>
+        <Message variant='danger'> {error}</Message>
       ) : (
         <Row>
           <Col md={6}>
