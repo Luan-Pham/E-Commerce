@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Form,
@@ -19,6 +19,7 @@ import Message from '../components/Message';
 const ProductScreen = () => {
   const [qty, setQty] = useState(0);
   const params = useParams();
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -29,6 +30,9 @@ const ProductScreen = () => {
     dispatch(listProductDetails(params.id));
   }, [dispatch, params.id]);
 
+  const addToCartHandler = () => {
+    navigate(`/cart/${params.id}?qty=${qty}`);
+  };
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
@@ -103,6 +107,7 @@ const ProductScreen = () => {
 
                 <ListGroupItem>
                   <Button
+                    onClick={addToCartHandler}
                     className='btn-block'
                     type='button'
                     disabled={product.countInStock === 0}
